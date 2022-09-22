@@ -1,0 +1,53 @@
+librelaxng-datatype-java (1.0+ds1-3.1) unstable; urgency=medium
+
+  * Non maintainer upload by the Reproducible Builds team.
+  * No source change upload to rebuild on buildd with .buildinfo files.
+
+ -- Holger Levsen <holger@debian.org>  Tue, 22 Dec 2020 19:55:45 +0100
+
+librelaxng-datatype-java (1.0+ds1-3) unstable; urgency=low
+
+  [ Giovanni Mascellani ]
+  * Upload to unstable.
+  * Fix a few lintian issues.
+    + Bump Standards-Version to 3.9.4 (no changes required).
+    + Remove useless dependency on JRE.
+    + Refer to new official debian/copyright format.
+    + Use canonical Vcs-* URLs.
+  * Add Emmanuel Bourg among the uploaders.
+
+  [ Emmanuel Bourg ]
+  * Removed the dependency on ${shlibs:Depends}
+
+ -- Giovanni Mascellani <gio@debian.org>  Wed, 22 May 2013 11:16:03 +0200
+
+librelaxng-datatype-java (1.0+ds1-2) experimental; urgency=low
+
+  * Force generation of 1.5-compatible Java classes (LP: #1049731).
+
+ -- Giovanni Mascellani <gio@debian.org>  Mon, 11 Mar 2013 21:45:41 +0100
+
+librelaxng-datatype-java (1.0+ds1-1) unstable; urgency=low
+
+  * Packaging again after removal (closes: #612443).
+
+ -- Giovanni Mascellani <gio@debian.org>  Fri, 11 Feb 2011 23:14:45 +0100
+
+librelaxng-datatype-java (1.0-2.1) unstable; urgency=low
+
+  * NMU of pkg-java maintainers to change build depends due to the removal
+    of libant1.5-java and the ongoing ant transition (closes: #304882)
+
+ -- Wolfgang Baer <WBaer@gmx.de>  Fri, 16 Sep 2005 15:52:51 +0200
+
+librelaxng-datatype-java (1.0-2) unstable; urgency=low
+
+  * Added "unzip" to Build-Depends (Closes: #255214)
+
+ -- Jesper Zedlitz <jesper@zedlitz.de>  Sun, 20 Jun 2004 10:25:04 +0200
+
+librelaxng-datatype-java (1.0-1) unstable; urgency=low
+
+  * Initial Release (Closes: #251300)
+
+ -- Jesper Zedlitz <jesper@zedlitz.de>  Thu, 27 May 2004 16:11:27 +0200

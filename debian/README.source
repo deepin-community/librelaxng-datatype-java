@@ -1,0 +1,11 @@
+librelaxng-datatype-java
+------------------------
+
+REPACKAGING
+
+The upstream source code has been repackages because of the following
+reasons:
+ * It comes only in .zip format, which is not supported;
+ * It contains pre-built binaries and Javadoc documentation, that have been
+   stripped.
+

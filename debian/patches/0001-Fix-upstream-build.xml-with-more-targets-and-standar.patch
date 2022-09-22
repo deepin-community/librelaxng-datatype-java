@@ -1,0 +1,115 @@
+From: Giovanni Mascellani <mascellani@poisson.phc.unipi.it>
+Date: Tue, 8 Feb 2011 23:00:20 +0100
+Subject: [PATCH] Fix upstream build.xml with more targets and standard target names.
+
+Upstream build.xml has just one target that does everything from
+compiling the sources to deploying the final .zip. I splitted all
+those steps in different targets, in order to make it compliant
+with what debhelper expects. A clean target was also added.
+---
+ build.xml |   74 ++++++++++++++++++++++++++++--------------------------------
+ 1 files changed, 35 insertions(+), 39 deletions(-)
+
+diff --git a/build.xml b/build.xml
+index 9e7d289..55a3de5 100644
+--- a/build.xml
++++ b/build.xml
+@@ -1,62 +1,58 @@
+ <?xml version="1.0"?>
+ 
+-<project name="relaxng" basedir="." default="release">
++<project name="relaxng" basedir="." default="dist">
+ 	<property name="version" value="1.0"/>
++	<property name="src.dir" location="src"/>
++	<property name="build.dir" location="bin"/>
++	<property name="doc.dir" location="doc"/>
++	<property name="manifest.file" location="MANIFEST.MF"/>
++	<property name="jarball" location="relaxngDatatype.jar"/>
+ 	
+-	<target name="release">
++	<target name="build">
+ 		<tstamp/>
+ 		
+ 		<!-- compile Java source files -->
+-		<mkdir dir="bin"/>
++		<mkdir dir="${build.dir}"/>
+ 		<javac
+-			srcdir="src"
+-			destdir="bin"
++			srcdir="${src.dir}"
++			destdir="${build.dir}"
+ 			debug="off"
+ 			optimize="on"
+ 			/>
+ 		
+-		<!-- create manifest file -->
+-		<echo file="MANIFEST.MF">Manifest-Version: 1.0
+-
+-Name: org/relaxng/datatype
+-Implementation-Title: RELAX NG Datatype Interface
+-Implementation-Version: 1.0
+-Implementation-Vendor: relaxng.sourceforge.net</echo>
+-		
+-		<!-- standard archive -->
+-		<delete file="relaxngDatatype.jar"/>
+-		<jar	jarfile="relaxngDatatype.jar"
+-				compress="false"
+-				manifest="MANIFEST.MF">
+-			<fileset dir="bin" includes="**/*.class" />
+-		</jar>
+-		
+ 		<!-- generate javadoc documentation -->
+-		<mkdir dir="doc"/>
++		<mkdir dir="${doc.dir}"/>
+ 		<javadoc	locale="en_US"
+ 					packagenames="org.relaxng.datatype.*"
+-					sourcepath="src"
+-					destdir="doc"
++					sourcepath="${src.dir}"
++					destdir="${doc.dir}"
+ 					windowtitle="RELAX NG Datatype Interface"
+ 					public="yes"
+ 					author="yes"
+ 					>
+ 		</javadoc>
++	</target>
+ 		
+-		<!-- creates distribution package -->
+-		<zip	zipfile="relaxngDatatype-${version}.zip">
+-			<zipfileset dir="." prefix="relaxngDatatype-${version}"
+-				includes="src/**/*.java" />
+-			<zipfileset dir="." prefix="relaxngDatatype-${version}"
+-				includes="doc/**/*.*" />
+-			<zipfileset dir="." prefix="relaxngDatatype-${version}"
+-				includes="README.txt" />
+-			<zipfileset dir="." prefix="relaxngDatatype-${version}"
+-				includes="copying.txt" />
+-			<zipfileset dir="." prefix="relaxngDatatype-${version}"
+-				includes="build.xml" />
+-			<zipfileset dir="." prefix="relaxngDatatype-${version}"
+-				includes="relaxngDatatype.jar" />
+-		</zip>
++	<target name="dist" depends="build">
++		<!-- create manifest file -->
++		<echo file="${manifest.file}">Manifest-Version: 1.0
++
++Name: org/relaxng/datatype
++Implementation-Title: RELAX NG Datatype Interface
++Implementation-Version: 1.0
++Implementation-Vendor: relaxng.sourceforge.net</echo>
++		
++		<!-- standard archive -->
++		<jar	jarfile="${jarball}"
++				manifest="${manifest.file}">
++			<fileset dir="${build.dir}" includes="**/*.class" />
++		</jar>
++	</target>
++
++	<target name="clean">
++		<delete dir="${build.dir}"/>
++		<delete dir="${doc.dir}"/>
++		<delete file="${manifest.file}"/>
++		<delete file="${jarball}"/>
+ 	</target>
+ </project>
+-- 

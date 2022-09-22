@@ -1,0 +1,31 @@
+From: Giovanni Mascellani <gio@debian.org>
+Description: Generate 1.5-compatible classes
+ Use the tricks described in https://wiki.ubuntu.com/JavaTeam/Java7Default
+ to generate 1.5-compatible classes.
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/librelaxng-datatype-java/+bug/1049731
+Forwarded: no
+Last-Update: 2013-03-11
+
+---
+Index: librelaxng-datatype-java/build.xml
+===================================================================
+--- librelaxng-datatype-java.orig/build.xml	2013-03-11 21:36:46.028457644 +0100
++++ librelaxng-datatype-java/build.xml	2013-03-11 21:38:41.437831056 +0100
+@@ -18,6 +18,9 @@
+ 			destdir="${build.dir}"
+ 			debug="off"
+ 			optimize="on"
++			encoding="ISO-8859-1"
++			target="1.5"
++			source="1.5"
+ 			/>
+ 		
+ 		<!-- generate javadoc documentation -->
+@@ -29,6 +32,7 @@
+ 					windowtitle="RELAX NG Datatype Interface"
+ 					public="yes"
+ 					author="yes"
++					source="1.5"
+ 					>
+ 		</javadoc>
+ 	</target>

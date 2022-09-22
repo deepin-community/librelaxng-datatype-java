@@ -1,0 +1,9 @@
+<project> 
+  <modelVersion>4.0.0</modelVersion> 
+  <groupId>relaxngDatatype</groupId> 
+  <artifactId>relaxngDatatype</artifactId> 
+  <version>1.0</version> 
+  <name>Datatype interface for RELAX NG</name>
+  <description>RELAX NG is a schema language for XML. This library is a Java
+    interface for describing datatypes within RELAX NG.</description>
+</project>

@@ -1,0 +1,17 @@
+Source: librelaxng-datatype-java
+Section: java
+Priority: extra
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders: Giovanni Mascellani <gio@debian.org>, Emmanuel Bourg <ebourg@apache.org>
+Build-Depends: debhelper (>= 7.0.50~), ant, maven-repo-helper (>= 1.5), default-jdk
+Standards-Version: 3.9.4
+Homepage: http://sourceforge.net/projects/relaxng/
+Vcs-Git: git://anonscm.debian.org/pkg-java/librelaxng-datatype-java.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-java/librelaxng-datatype-java.git;a=summary
+
+Package: librelaxng-datatype-java
+Architecture: all
+Depends: ${misc:Depends}
+Description: Java datatype interface for RELAX NG
+ RELAX NG is a schema language for XML. This library is a Java interface
+ for describing datatypes within RELAX NG.
